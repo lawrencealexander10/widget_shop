@@ -1,0 +1,175 @@
+*{
+  font-family: 'Avenir', sans-serif; 
+  font-weight:400;
+}
+.site-color{
+	background-color: #f2f2f2;
+}
+.top-section{
+	width: 100%;
+	background-image: url("http://res.cloudinary.com/grubhub-marketing/image/upload/v1460472623/Marketing%20assets/2016-MarchSeasonal-Desktop-1200by550px-GH.jpg") ;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	// position: absolute;
+	
+	h2{
+		margin-bottom: 15px;
+		padding-top: 25%;
+	}
+
+	p{
+		text-align: left; 
+		color: white; 
+		margin-bottom: 10px;
+	}
+
+	select{
+		display: inline;
+		text-align: center;
+		width: 400px;
+	}
+
+	form{
+		display: inline;
+	}
+
+	input{
+		
+	}
+
+	.homepage-center-text{
+		text-align: left;
+		color: white;
+		// font-size: 2em;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+}
+
+
+.wrap-nav{
+	z-index: 100;
+	width: 100%;
+	background-color: white;
+	
+	.basket{
+		font-weight: 900; 
+		color: #cccccc; 
+		font-size: 15px;
+	}
+	.logo-title{
+		top: 15px;
+		display: inline-block;
+    	position: relative;
+		color: #61dff0;
+		font-weight: 900;
+		font-family: 'Avenir', sans-serif;
+		font-size: 25px;
+		text-decoration: none;
+	}
+
+	.mainNavCart-itemQty{
+	    font-size: 15px;
+	    font-weight: 900;
+	    position: relative;
+	    display: block;
+	    text-align: center;
+	    color: #61dff0;
+  	}
+
+  	.cart{
+  		padding-top: 11px;
+  		padding-bottom: 11px;
+  	}
+}
+
+#product-show{
+  .tier{
+  	font-size: 1.5em;
+  }
+}
+
+#product-index{
+	
+  .grid-item{
+		background-color: white;
+		display: inline-block;
+		margin: 30px 15px;
+		p{
+			font-size: 15px;
+			margin:30px;
+		}
+	}
+
+	.preview-pane{
+		height: 150px;
+		background-size: cover; 
+		td{
+			border:none;
+			text-align: center;
+		}
+	}
+	.headline-name{
+		font-size: 25px;
+		font-weight: 900;
+		padding-top: 20px;
+	}
+	.preview-info{
+		color:white;
+		.table-pane{
+			padding-top: 36.25px;
+		}
+		table{
+			margin-bottom: 0px;
+		}
+		.white{
+			opacity: .7;
+			padding: 0px;
+		}
+		td{
+			padding-top: 0px;
+			font-weight: 900;
+		}
+	}
+	.popup-wrapper{
+		position: absolute;
+    	bottom: 0;
+    	width: 100%;
+    	a{
+    		color: white;
+    		font-weight: 900;
+    		text-decoration: none;
+    	}
+    	.see-more{
+			background-color: #61dff0;
+    	}
+    	.add-to{
+			background-color: white;
+    	}
+    	p{
+		font-size: 15px;
+		font-weight: 900;
+    	margin:0px;
+    	padding-bottom: 30px;
+    	padding-top: 30px;
+    	}
+	}
+}
+
+#checkout-table{
+	border:0;
+	tr{
+		border: 0;
+	}
+	td{
+		border-left: 0;
+		border-right: 0;
+	}
+}
+
+.group-buttons{
+	form{
+		display: inline;
+		margin-right: 5px;
+	}
+}
