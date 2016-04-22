@@ -1,3 +1,10 @@
-<h2>Your basket</h2>
-<%= render 'items', :order => current_order %>
-<p><%= link_to 'Empty basket', basket_path, :method => :delete %></p>
+<div class="container">
+	<div class="row">
+	<div style="color: gray; text-align:center; font-size: 30px; padding-bottom: 20px;" class="fa fa-shopping-cart col-md-12"></div></div>
+	<%= render 'items', :order => current_order %>
+	<div class="group-buttons">
+		<%= button_to 'Empty basket', basket_path, :method => :delete %>
+		<%= button_to( 'Continue Shopping', root_path)  %> 
+		<%= button_to "Checkout", checkout_path, :method => :get, :style => "float: right"  %>
+	</div>
+</div>

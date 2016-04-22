@@ -1,14 +1,55 @@
-<h2>Products</h2>
+<div id="product-index" ng-controller="ProductController as prod">
 
-<% @products.each do |category, products| %>
-  <h3><%= category.name %></h3>
-  <ul>
-    <% products.each do |product| %>
-    <li>
-      <h4><%= link_to product.name, product_path(product.permalink) %></h4>
-      <p><%= product.short_description %></p>
-      <p><b>Price:</b> <%= number_to_currency product.price %></p>
-    </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="preview-pane" style="background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.9) 100%), url(http://foodporndaily.com/pictures/succulent-cajun-spiced-grilled-chicken-legs.jpg) center ">
+  <div class="container-fluid preview-info">
+  <div class="row">
+    <div class="col-md-offset-4 col-md-4">
+      <center class="headline-name">{{name}}<center>
+    </div>
+  </div>
+  <div class="row table-pane">
+    <div class="col-md-offset-4 col-md-4">
+      <table style="width:100%">
+        <tr>
+          <td class="white">prep</td>
+          <td class="white">cook</td>    
+          <td class="white">feeds</td>
+          <td class="white">cost</td>    
+          <td class="white">cal.</td>
+        </tr>
+        <tr>
+          <td>{{prep}}</td>
+          <td>{{cook}}</td>    
+          <td>{{feeds}}</td>
+          <td>{{price | currency}}</td>    
+          <td>{{cal}}</td>
+        </tr>
+    </table>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="bottom-pane" class="container-fluid">
+  <div class="row-fluid">
+    <div ng-init="tab=1; " class="col-md-10 col-md-offset-1">
+      <% @products.each do |category, products| %>
+      <% products.each do |product| %>
+      <div ng-click="myFunction($event); tab = <%=product.id%>" id="<%=product.permalink %>" class="grid-item">
+        <div style="position:relative">
+          <% if product.default_image %>
+          <%= image_tag(product.default_image.path, :size => "300x300", :class=> "product-image") %>
+          <% end %>
+          <p style="font-weight: 900"><%= product.name %></p>
+          <div ng-show="tab == <%=product.id%>" class="popup-wrapper">
+            <p class="see-more"> <%= link_to 'see more', product_path(product.permalink) %> </p>
+            <p class="add-to"> <%= link_to "Add #{product.name} box", product_path(product.permalink), :method => :post%> </p>
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+  </div>
+</div>

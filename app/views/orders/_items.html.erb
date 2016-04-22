@@ -1,4 +1,4 @@
-<table width='100%' border='1'>
+<table id="checkout-table" width='100%' border='1'>
   <thead>
     <tr>
       <td>Quantity</td>
@@ -11,8 +11,21 @@
   <tbody>
     <% order.order_items.each do |item| %>
     <tr>
-      <td><%= item.quantity %></td>
-      <td><%= item.ordered_item.full_name %></td>
+      <td style="font-weight: 600">
+        <%= item.quantity %>
+        <% unless defined?(readonly) %>
+          <span>
+            <%= link_to "+", adjust_basket_item_quantity_path(item.id), :method => :post, :class => 'ajax' %>
+            <%= link_to "-", adjust_basket_item_quantity_path(item.id), :method => :delete, :class => 'ajax' %>
+          </span>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to item.ordered_item.full_name, product_path(item.ordered_item.permalink) %>
+        <% unless defined?(readonly) %>
+          <%= link_to "Delete", remove_basket_item_path(item), :method => :delete, :class => 'delete ajax' %>
+        <% end %>
+      </td>
       <td><%= number_to_currency item.sub_total %></td>
       <td><%= number_to_currency item.tax_amount %></td>
       <td><%= number_to_currency item.total %></td>
@@ -20,13 +33,20 @@
     <% end %>
 
     <% if order.delivery_service %>
-    <tr>
-      <td></td>
-      <td><%= order.delivery_service.name %></td>
-      <td><%= number_to_currency order.delivery_price %></td>
-      <td><%= number_to_currency order.delivery_tax_amount %></td>
-      <td><%= number_to_currency order.delivery_price + order.delivery_tax_amount %></td>
-    </tr>
+      <tr class="delivery">
+        <td class="method" colspan="4">
+          <% if defined?(readonly) %>
+            <%= order.delivery_service.name %>
+          <% else %>
+            <%= form_tag change_delivery_service_path do  %>
+              <%= select_tag 'delivery_service', options_from_collection_for_select(order.available_delivery_services, :id, :name, order.delivery_service.id) %>
+            <% end %>
+          <% end %>
+        </td>
+        <td class="money">
+          <%= number_to_currency order.delivery_price %>
+        </td>
+      </tr>
     <% end %>
 
   </tbody>

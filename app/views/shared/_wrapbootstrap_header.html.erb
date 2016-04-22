@@ -1,0 +1,17 @@
+<nav class="wrap-nav">
+	<div class="container">
+		<div class="row">
+			<%= link_to( 'bento', root_path, :class => 'logo-title' )  %> 
+			<div class="cart">
+			  <% if has_order? && current_order.has_items? %>
+			  		<%= link_to "box", basket_path, :class=> "basket"%>
+			    	<span class="mainNavCart-itemQty"> <%=current_order.total_items%> </span>
+			  <%else%>
+			    	<%= link_to "box", basket_path, :style=> "font-weight: bold; color: #cccccc; font-size: 20px;"%>
+			    	<span class="mainNavCart-itemQty"> 0 </span>
+			  <% end %>
+			</div>
+		</div>
+	</div>
+</nav>
+
